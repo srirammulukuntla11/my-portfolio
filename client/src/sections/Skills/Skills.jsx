@@ -74,8 +74,17 @@ function Skills() {
   return (
     <section
       id="skills"
-      className="py-24 px-6 lg:px-10 bg-[#0b1120]"
+      className="relative overflow-hidden py-32 px-6 lg:px-10 bg-[#08101f]"
     >
+      {/* Background Glow */}
+
+<div className="absolute inset-0 -z-10 overflow-hidden">
+
+  <div className="absolute top-10 right-20 h-80 w-80 rounded-full bg-cyan-500/10 blur-[150px]" />
+
+  <div className="absolute bottom-10 left-20 h-72 w-72 rounded-full bg-blue-600/10 blur-[140px]" />
+
+</div>
       <div className="max-w-7xl mx-auto">
 
         <EditableText
@@ -86,10 +95,10 @@ function Skills() {
               title: value,
             })
           }
-          className="text-4xl md:text-5xl font-bold text-white"
+          className="text-5xl md:text-6xl lg:text-7xl font-black tracking-[-0.04em] text-white"
         />
 
-        <div className="w-24 h-1 bg-cyan-400 rounded-full mt-4 mb-16"></div>
+       <div className="mt-6 mb-20 h-1.5 w-32 rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 shadow-[0_0_20px_rgba(34,211,238,0.45)]"></div>
 
         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
 
@@ -97,19 +106,22 @@ function Skills() {
 
             <div
               key={category.id}
-              className="
+ className="
 group
-bg-slate-900
+rounded-[30px]
 border
-border-slate-800
-rounded-3xl
+border-white/10
+bg-gradient-to-br
+from-slate-900/80
+via-slate-900/70
+to-slate-800/70
 p-8
+backdrop-blur-xl
 transition-all
-duration-300
-hover:border-cyan-400
-hover:-translate-y-2
-hover:shadow-2xl
-hover:shadow-cyan-500/10
+duration-500
+hover:-translate-y-1
+hover:border-cyan-400/30
+hover:shadow-[0_0_40px_rgba(34,211,238,0.15)]
 "
             >
 
@@ -120,7 +132,7 @@ hover:shadow-cyan-500/10
                   onChange={(value) =>
                     updateCategoryTitle(catIndex, value)
                   }
-                  className="text-2xl font-bold text-white"
+                  className="text-3xl font-black tracking-tight text-white"
                 />
 
                 {editMode && (
@@ -140,7 +152,7 @@ duration-300
 
               </div>
 
-              <div className="w-14 h-1 bg-cyan-400 rounded-full mt-4 mb-6"></div>
+             <div className="mt-4 mb-8 h-1 w-16 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500"></div>
 
               <div className="flex flex-wrap gap-4 mt-8">
 
@@ -148,20 +160,22 @@ duration-300
 
                   <div
                     key={skill.id}
-                    className="
+                   className="
 flex
 items-center
 gap-2
+rounded-full
+border
+border-cyan-400/20
+bg-cyan-500/10
 px-5
 py-3
-rounded-full
-bg-cyan-500/10
-border
-border-cyan-500/20
+backdrop-blur-md
 transition-all
 duration-300
+hover:scale-105
+hover:border-cyan-400/40
 hover:bg-cyan-500/20
-hover:border-cyan-400
 "
                   >
 
@@ -170,7 +184,7 @@ hover:border-cyan-400
                       onChange={(value) =>
                         updateSkill(catIndex, skillIndex, value)
                       }
-                      className="font-medium text-slate-200"
+                      className="font-semibold tracking-wide text-slate-200"
                     />
 
                     {editMode && (
@@ -178,12 +192,24 @@ hover:border-cyan-400
                         onClick={() =>
                           deleteSkill(catIndex, skillIndex)
                         }
-                        className="
-p-1
-rounded-md
-hover:bg-red-500/10
+                       className="
+mt-8
+inline-flex
+items-center
+gap-2
+rounded-xl
+border
+border-cyan-400/20
+bg-cyan-500/10
+px-5
+py-3
+font-semibold
+text-cyan-300
 transition-all
 duration-300
+hover:border-cyan-400
+hover:bg-cyan-500
+hover:text-white
 "
                       >
                         <Trash2 size={15} className="text-red-500 hover:text-red-400" />
@@ -200,21 +226,18 @@ duration-300
                 <button
                   onClick={() => addSkill(catIndex)}
                   className="
-mt-8
-inline-flex
-items-center
-gap-2
-px-4
-py-2
-rounded-xl
-bg-cyan-500/10
-border
-border-cyan-500/20
-text-cyan-300
-hover:bg-cyan-500
-hover:text-white
+rounded-2xl
+bg-cyan-500
+px-7
+py-4
+font-semibold
+text-white
+shadow-lg
+shadow-cyan-500/20
 transition-all
 duration-300
+hover:-translate-y-1
+hover:bg-cyan-400
 "
                 >
                   <Plus size={18} />

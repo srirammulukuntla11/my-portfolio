@@ -9,6 +9,7 @@ import Certifications from "./sections/Certifications/Certifications";
 import CodingProfiles from "./sections/CodingProfiles/CodingProfiles";
 import Experience from "./sections/Experience/Experience";
 
+
 function App() {
   return (
     <div className="bg-slate-950 text-white min-h-screen">
@@ -22,6 +23,7 @@ function App() {
         <CodingProfiles />
         <Experience />
         <Contact />
+        
     </div>
   );
 }

@@ -52,8 +52,17 @@ function Education() {
   return (
     <section
       id="education"
-      className="py-24 px-6 lg:px-10 bg-slate-950"
+      className="relative overflow-hidden py-32 px-6 lg:px-10 bg-[#08101f]"
     >
+      {/* Background Glow */}
+
+<div className="absolute inset-0 -z-10 overflow-hidden">
+
+  <div className="absolute top-10 left-20 h-80 w-80 rounded-full bg-cyan-500/10 blur-[150px]" />
+
+  <div className="absolute bottom-0 right-20 h-80 w-80 rounded-full bg-blue-600/10 blur-[150px]" />
+
+</div>
       <div className="max-w-6xl mx-auto">
 
         <EditableText
@@ -64,16 +73,15 @@ function Education() {
               title: value,
             })
           }
-          className="text-4xl md:text-5xl font-bold text-white"
+          className="text-5xl md:text-6xl lg:text-7xl font-black tracking-[-0.04em] text-white"
         />
 
-        <div className="w-24 h-1 bg-cyan-400 rounded-full mt-4 mb-16"></div>
-
+        <div className="mt-6 mb-20 h-1.5 w-32 rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 shadow-[0_0_20px_rgba(34,211,238,0.45)]"></div>
         <div className="relative">
 
           {/* Timeline Line */}
 
-          <div className="absolute left-5 top-0 bottom-0 w-1 bg-cyan-500/30 rounded-full"></div>
+          <div className="absolute left-5 top-0 bottom-0 w-[3px] rounded-full bg-gradient-to-b from-cyan-400 via-cyan-500/40 to-transparent"></div>
 
           <div className="space-y-12">
 
@@ -88,13 +96,13 @@ function Education() {
 
                 <div className="relative z-10 flex-shrink-0">
 
-                  <div className="w-10 h-10 rounded-full bg-cyan-500 border-4 border-slate-950 shadow-lg shadow-cyan-500/40"></div>
+                  <div className="w-10 h-10 rounded-full border-4 border-[#08101f] bg-cyan-400 shadow-[0_0_30px_rgba(34,211,238,0.45)]"></div>
 
                 </div>
 
                 {/* Card */}
 
-                <div className="flex-1 bg-slate-900 border border-slate-800 rounded-3xl p-8 hover:border-cyan-400 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300">
+                <div className="flex-1 rounded-[30px] border border-white/10 bg-gradient-to-br from-slate-900/80 via-slate-900/70 to-slate-800/70 p-8 md:p-10 backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-cyan-400/30 hover:shadow-[0_0_40px_rgba(34,211,238,0.15)]">
 
                   <div className="flex justify-between items-start gap-5">
 
@@ -105,7 +113,7 @@ function Education() {
                         onChange={(value) =>
                           updateItem(index, "degree", value)
                         }
-                        className="text-3xl md:text-4xl font-bold text-white"
+                        className="text-3xl md:text-[38px] font-black tracking-tight text-white"
                       />
 
                       <EditableText
@@ -113,7 +121,7 @@ function Education() {
                         onChange={(value) =>
                           updateItem(index, "college", value)
                         }
-                        className="block mt-4 text-xl font-medium text-cyan-400"
+                        className="block mt-4 text-xl font-semibold text-cyan-300"
                       />
 
                     </div>
@@ -131,7 +139,7 @@ function Education() {
 
                   <div className="flex flex-wrap gap-5 mt-8">
 
-                    <div className="flex items-center gap-3 bg-slate-800 border border-slate-700 rounded-full px-5 py-3">
+                    <div className="flex items-center gap-3 rounded-full border border-white/10 bg-slate-800/60 px-5 py-3 backdrop-blur-md">
 
                       <span className="text-xl">📅</span>
 
@@ -145,7 +153,7 @@ function Education() {
 
                     </div>
 
-                    <div className="flex items-center gap-3 bg-cyan-500/10 border border-cyan-500/30 rounded-full px-5 py-3">
+                    <div className="flex items-center gap-3 rounded-full border border-cyan-400/20 bg-cyan-500/10 px-5 py-3 backdrop-blur-md">
 
                       <span className="text-xl">⭐</span>
 

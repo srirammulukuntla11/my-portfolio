@@ -55,8 +55,17 @@ Strong in Java & DSA`,
   return (
   <section
     id="coding-profiles"
-    className="py-24 px-6 lg:px-10 bg-slate-950"
+    className="relative overflow-hidden py-32 px-6 lg:px-10 bg-[#08101f]"
   >
+    {/* Background Glow */}
+
+<div className="absolute inset-0 -z-10 overflow-hidden">
+
+  <div className="absolute top-10 left-20 h-80 w-80 rounded-full bg-cyan-500/10 blur-[150px]" />
+
+  <div className="absolute bottom-10 right-20 h-80 w-80 rounded-full bg-blue-600/10 blur-[150px]" />
+
+</div>
     <div className="max-w-7xl mx-auto">
 
       <EditableText
@@ -67,10 +76,10 @@ Strong in Java & DSA`,
             title: value,
           })
         }
-        className="text-4xl md:text-5xl font-bold text-white"
+       className="text-5xl md:text-6xl lg:text-7xl font-black tracking-[-0.04em] text-white"
       />
 
-      <div className="w-24 h-1 bg-cyan-400 rounded-full mt-4 mb-16"></div>
+      <div className="mt-6 mb-20 h-1.5 w-32 rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 shadow-[0_0_20px_rgba(34,211,238,0.45)]"></div>
 
       <div className="grid md:grid-cols-2 gap-8">
 
@@ -78,7 +87,23 @@ Strong in Java & DSA`,
 
           <div
             key={item.id}
-            className="bg-slate-900 border border-slate-800 rounded-3xl p-8 hover:border-cyan-400 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300"
+            className="
+rounded-[30px]
+border
+border-white/10
+bg-gradient-to-br
+from-slate-900/80
+via-slate-900/70
+to-slate-800/70
+p-8
+md:p-10
+backdrop-blur-xl
+transition-all
+duration-500
+hover:-translate-y-1
+hover:border-cyan-400/30
+hover:shadow-[0_0_40px_rgba(34,211,238,0.15)]
+"
           >
 
             <div className="flex justify-between items-start">
@@ -88,7 +113,7 @@ Strong in Java & DSA`,
                 onChange={(value) =>
                   updateProfile(index, "platform", value)
                 }
-                className="text-2xl font-bold text-white"
+                className="text-3xl font-black tracking-tight text-white"
               />
 
               {editMode && (
@@ -102,7 +127,7 @@ Strong in Java & DSA`,
 
             </div>
 
-            <div className="w-12 h-1 bg-cyan-400 rounded-full mt-4 mb-6"></div>
+            <div className="mt-4 mb-8 h-1 w-16 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500"></div>
 
             <p className="text-sm text-gray-400 mb-2">
               Highlights & Stats
@@ -114,7 +139,7 @@ Strong in Java & DSA`,
               onChange={(value) =>
                 updateProfile(index, "highlights", value)
               }
-              className="text-slate-300 leading-8 whitespace-pre-line"
+              className="text-lg leading-8 tracking-[0.01em] text-slate-300 whitespace-pre-line"
             />
 
             {editMode && (
@@ -140,7 +165,23 @@ Strong in Java & DSA`,
                   href={item.profile}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-600 transition"
+                 className="
+inline-flex
+items-center
+gap-2
+rounded-xl
+bg-cyan-500
+px-6
+py-3
+font-semibold
+text-white
+shadow-lg
+shadow-cyan-500/20
+transition-all
+duration-300
+hover:-translate-y-1
+hover:bg-cyan-400
+"
                 >
                   <ExternalLink size={18} />
                   Visit Profile
@@ -158,7 +199,24 @@ Strong in Java & DSA`,
       {editMode && (
         <button
           onClick={addProfile}
-          className="mt-10 flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 px-6 py-3 rounded-xl font-semibold"
+          className="
+mt-12
+flex
+items-center
+gap-2
+rounded-2xl
+bg-cyan-500
+px-7
+py-4
+font-semibold
+text-white
+shadow-lg
+shadow-cyan-500/20
+transition-all
+duration-300
+hover:-translate-y-1
+hover:bg-cyan-400
+"
         >
           <Plus size={18} />
           Add Profile

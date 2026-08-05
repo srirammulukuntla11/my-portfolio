@@ -89,8 +89,17 @@ const deleteTech = (projectIndex, techIndex) => {
   return (
     <section
       id="projects"
-      className="py-24 px-6 lg:px-10 bg-slate-950"
+     className="relative overflow-hidden py-32 px-6 lg:px-10 bg-[#08101f]"
     >
+      {/* Background Glow */}
+
+<div className="absolute inset-0 -z-10 overflow-hidden">
+
+  <div className="absolute top-10 left-20 h-80 w-80 rounded-full bg-cyan-500/10 blur-[150px]" />
+
+  <div className="absolute bottom-10 right-20 h-80 w-80 rounded-full bg-blue-600/10 blur-[150px]" />
+
+</div>
       <div className="max-w-7xl mx-auto">
 
         <EditableText
@@ -101,19 +110,35 @@ const deleteTech = (projectIndex, techIndex) => {
               title: value,
             })
           }
-          className="text-4xl md:text-5xl font-bold text-white"
+          className="text-5xl md:text-6xl lg:text-7xl font-black tracking-[-0.04em] text-white"
         />
 
-        <div className="w-24 h-1 bg-cyan-400 rounded-full mt-4 mb-16"></div>
+       <div className="mt-6 mb-20 h-1.5 w-32 rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 shadow-[0_0_20px_rgba(34,211,238,0.45)]"></div>
 
         <div className="space-y-10">
 
           {projects.items.map((project, index) => (
 
             <div
-              key={project.id}
-              className="bg-slate-900 border border-slate-800 rounded-3xl p-8 hover:border-cyan-400 transition"
-            >
+  key={project.id}
+  className="
+rounded-[30px]
+border
+border-white/10
+bg-gradient-to-br
+from-slate-900/80
+via-slate-900/70
+to-slate-800/70
+p-8
+md:p-10
+backdrop-blur-xl
+transition-all
+duration-500
+hover:-translate-y-1
+hover:border-cyan-400/30
+hover:shadow-[0_0_40px_rgba(34,211,238,0.15)]
+"
+>
 
               <div className="flex justify-between">
 
@@ -124,7 +149,7 @@ const deleteTech = (projectIndex, techIndex) => {
                     onChange={(value) =>
                       updateProject(index, "title", value)
                     }
-                    className="text-3xl font-bold text-white"
+                   className="text-3xl md:text-4xl font-black tracking-tight text-white"
                   />
 
                 </div>
@@ -151,10 +176,12 @@ const deleteTech = (projectIndex, techIndex) => {
                     updateProject(index, "description", value)
                   }
                   className="
-                    text-slate-300
-                    leading-9
-                    whitespace-pre-line
-                  "
+text-lg
+leading-8
+tracking-[0.01em]
+text-slate-300
+whitespace-pre-line
+"
                 />
 
               </div>
@@ -165,20 +192,24 @@ const deleteTech = (projectIndex, techIndex) => {
 
   <div
     key={tech.id}
-    className="
+   className="
+flex
+items-center
+gap-2
+rounded-full
+border
+border-cyan-400/20
+bg-cyan-500/10
 px-5
 py-2.5
-rounded-full
-bg-slate-800
-border
-border-slate-700
-text-cyan-300
 font-medium
+text-cyan-300
+backdrop-blur-md
 transition-all
 duration-300
-hover:border-cyan-400
-hover:bg-cyan-500/10
-flex items-center gap-2
+hover:scale-105
+hover:border-cyan-400/40
+hover:bg-cyan-500/20
 "
   >
     <EditableText
@@ -222,7 +253,24 @@ flex items-center gap-2
                       href={project.github}
                       target="_blank"
                       rel="noreferrer"
-                      className="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 transition flex items-center gap-2 text-white"
+                      className="
+inline-flex
+items-center
+gap-2
+rounded-xl
+border
+border-white/10
+bg-slate-800/80
+px-6
+py-3
+font-semibold
+text-white
+transition-all
+duration-300
+hover:-translate-y-1
+hover:border-cyan-400/30
+hover:bg-slate-700
+"
                     >
                       <FaGithub size={18} />
                       View GitHub
@@ -234,7 +282,23 @@ flex items-center gap-2
                       href={project.demo}
                       target="_blank"
                       rel="noreferrer"
-                      className="px-6 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-600 transition flex items-center gap-2 text-white"
+                      className="
+inline-flex
+items-center
+gap-2
+rounded-xl
+bg-cyan-500
+px-6
+py-3
+font-semibold
+text-white
+shadow-lg
+shadow-cyan-500/20
+transition-all
+duration-300
+hover:-translate-y-1
+hover:bg-cyan-400
+"
                     >
                       <ExternalLink size={18} />
                       Live Demo
@@ -285,7 +349,23 @@ flex items-center gap-2
             <div className="mt-12">
               <button
                 onClick={addProject}
-                className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 px-6 py-3 rounded-xl font-semibold text-white"
+               className="
+flex
+items-center
+gap-2
+rounded-2xl
+bg-cyan-500
+px-7
+py-4
+font-semibold
+text-white
+shadow-lg
+shadow-cyan-500/20
+transition-all
+duration-300
+hover:-translate-y-1
+hover:bg-cyan-400
+"
               >
                 <Plus size={18} />
                 Add Project

@@ -57,7 +57,16 @@ function Certifications() {
   };
 
   return (
-    <section id="certifications" className="py-24 px-6 lg:px-10 bg-[#0b1120]">
+    <section id="certifications" className="relative overflow-hidden py-32 px-6 lg:px-10 bg-[#08101f]">
+      {/* Background Glow */}
+
+<div className="absolute inset-0 -z-10 overflow-hidden">
+
+  <div className="absolute top-10 right-20 h-80 w-80 rounded-full bg-cyan-500/10 blur-[150px]" />
+
+  <div className="absolute bottom-10 left-20 h-72 w-72 rounded-full bg-blue-600/10 blur-[140px]" />
+
+</div>
       <div className="max-w-7xl mx-auto">
 
         <EditableText
@@ -68,10 +77,10 @@ function Certifications() {
               title: value,
             })
           }
-          className="text-4xl md:text-5xl font-bold text-white"
+         className="text-5xl md:text-6xl lg:text-7xl font-black tracking-[-0.04em] text-white"
         />
 
-        <div className="w-24 h-1 bg-cyan-400 rounded-full mt-4 mb-16"></div>
+        <div className="mt-6 mb-20 h-1.5 w-32 rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 shadow-[0_0_20px_rgba(34,211,238,0.45)]"></div>
 
         <div className="grid md:grid-cols-2 gap-8">
 
@@ -79,7 +88,23 @@ function Certifications() {
 
             <div
               key={item.id}
-              className="bg-slate-900 border border-slate-800 rounded-3xl p-8 hover:border-cyan-400 transition"
+              className="
+rounded-[30px]
+border
+border-white/10
+bg-gradient-to-br
+from-slate-900/80
+via-slate-900/70
+to-slate-800/70
+p-8
+md:p-10
+backdrop-blur-xl
+transition-all
+duration-500
+hover:-translate-y-1
+hover:border-cyan-400/30
+hover:shadow-[0_0_40px_rgba(34,211,238,0.15)]
+"
             >
 
               <div className="flex justify-between">
@@ -89,7 +114,7 @@ function Certifications() {
                   onChange={(value) =>
                     updateCertificate(index, "title", value)
                   }
-                  className="text-2xl font-bold text-white"
+                 className="text-3xl font-black tracking-tight text-white"
                 />
 
                 {editMode && (
@@ -108,7 +133,7 @@ function Certifications() {
                 onChange={(value) =>
                   updateCertificate(index, "organization", value)
                 }
-                className="block mt-4 text-cyan-400"
+                className="block mt-4 text-lg font-semibold text-cyan-300"
               />
 
                 <EditableText
@@ -116,7 +141,7 @@ function Certifications() {
                   onChange={(value) =>
                     updateCertificate(index, "year", value)
                   }
-                  className="block mt-2 text-gray-400"
+                  className="block mt-2 text-slate-400 font-medium"
                 />
                 {/* Description */}
                 <EditableText
@@ -125,7 +150,7 @@ function Certifications() {
                   onChange={(value) =>
                     updateCertificate(index, "description", value)
                   }
-                  className="block mt-5 text-slate-300 leading-7"
+                 className="block mt-6 text-lg leading-8 tracking-[0.01em] text-slate-300"
                 />
 
 
@@ -186,7 +211,24 @@ function Certifications() {
                           href={item.certificate}
                           target="_blank"
                           rel="noreferrer"
-                          className="px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700"
+                         className="
+inline-flex
+items-center
+gap-2
+rounded-xl
+border
+border-white/10
+bg-slate-800/80
+px-5
+py-3
+font-semibold
+text-white
+transition-all
+duration-300
+hover:-translate-y-1
+hover:border-cyan-400/30
+hover:bg-slate-700
+"
                         >
                           📜 View Certificate
                         </a>
@@ -197,7 +239,23 @@ function Certifications() {
                           href={item.credential}
                           target="_blank"
                           rel="noreferrer"
-                          className="px-5 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-600"
+                          className="
+inline-flex
+items-center
+gap-2
+rounded-xl
+bg-cyan-500
+px-5
+py-3
+font-semibold
+text-white
+shadow-lg
+shadow-cyan-500/20
+transition-all
+duration-300
+hover:-translate-y-1
+hover:bg-cyan-400
+"
                         >
                           🔗 View Credential
                         </a>
@@ -208,7 +266,23 @@ function Certifications() {
                           href={item.project}
                           target="_blank"
                           rel="noreferrer"
-                          className="px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700"
+                          className="
+inline-flex
+items-center
+gap-2
+rounded-xl
+bg-emerald-600
+px-5
+py-3
+font-semibold
+text-white
+shadow-lg
+shadow-emerald-500/20
+transition-all
+duration-300
+hover:-translate-y-1
+hover:bg-emerald-500
+"
                         >
                           💻 View Project
                         </a>
@@ -228,7 +302,24 @@ function Certifications() {
         {editMode && (
           <button
             onClick={addCertificate}
-            className="mt-10 flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 px-6 py-3 rounded-xl font-semibold"
+            className="
+mt-12
+flex
+items-center
+gap-2
+rounded-2xl
+bg-cyan-500
+px-7
+py-4
+font-semibold
+text-white
+shadow-lg
+shadow-cyan-500/20
+transition-all
+duration-300
+hover:-translate-y-1
+hover:bg-cyan-400
+"
           >
             <Plus size={18} />
             Add Certificate

@@ -37,8 +37,17 @@ function Contact() {
   return (
     <section
       id="contact"
-      className="py-24 px-6 lg:px-10 bg-[#0b1120]"
+      className="relative overflow-hidden py-32 px-6 lg:px-10 bg-[#08101f]"
     >
+      {/* Background Glow */}
+
+<div className="absolute inset-0 -z-10 overflow-hidden">
+
+  <div className="absolute top-10 left-20 h-80 w-80 rounded-full bg-cyan-500/10 blur-[150px]" />
+
+  <div className="absolute bottom-10 right-20 h-80 w-80 rounded-full bg-blue-600/10 blur-[150px]" />
+
+</div>
       <div className="max-w-5xl mx-auto">
 
         
@@ -54,7 +63,7 @@ function Contact() {
    <EditableText
   value={contact.title}
   onChange={(value) => update("title", value)}
-  className="text-3xl font-bold text-white"
+  className="text-5xl md:text-6xl lg:text-7xl font-black tracking-[-0.04em] text-white"
 />
 
     <div className="mt-6">
@@ -62,7 +71,7 @@ function Contact() {
   multiline
   value={contact.subtitle}
   onChange={(value) => update("subtitle", value)}
-  className="mt-8 text-lg text-gray-400 leading-8"
+  className="mt-8 text-lg md:text-xl leading-8 tracking-[0.01em] text-slate-300"
 />
 </div>
     {editMode && (
@@ -115,7 +124,22 @@ function Contact() {
 
     {/* Email */}
 
-    <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-cyan-400 transition">
+    <div className="
+rounded-[24px]
+border
+border-white/10
+bg-gradient-to-br
+from-slate-900/80
+via-slate-900/70
+to-slate-800/70
+p-6
+backdrop-blur-xl
+transition-all
+duration-500
+hover:-translate-y-1
+hover:border-cyan-400/30
+hover:shadow-[0_0_35px_rgba(34,211,238,0.15)]
+">
 
       <div className="flex justify-between items-center">
 
@@ -163,7 +187,22 @@ function Contact() {
 
     {/* Phone */}
 
-    <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-cyan-400 transition">
+    <div className="
+rounded-[24px]
+border
+border-white/10
+bg-gradient-to-br
+from-slate-900/80
+via-slate-900/70
+to-slate-800/70
+p-6
+backdrop-blur-xl
+transition-all
+duration-500
+hover:-translate-y-1
+hover:border-cyan-400/30
+hover:shadow-[0_0_35px_rgba(34,211,238,0.15)]
+">
 
       <div className="flex items-center gap-3">
 
@@ -189,7 +228,22 @@ function Contact() {
 
     {/* Location */}
 
-    <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-cyan-400 transition">
+    <div className="
+rounded-[24px]
+border
+border-white/10
+bg-gradient-to-br
+from-slate-900/80
+via-slate-900/70
+to-slate-800/70
+p-6
+backdrop-blur-xl
+transition-all
+duration-500
+hover:-translate-y-1
+hover:border-cyan-400/30
+hover:shadow-[0_0_35px_rgba(34,211,238,0.15)]
+">
 
       <div className="flex items-center gap-3">
 
@@ -222,7 +276,24 @@ function Contact() {
       href={contact.github}
       target="_blank"
       rel="noreferrer"
-      className="flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 transition"
+      className="
+inline-flex
+items-center
+gap-2
+rounded-xl
+border
+border-white/10
+bg-slate-800/80
+px-6
+py-3
+font-semibold
+text-white
+transition-all
+duration-300
+hover:-translate-y-1
+hover:border-cyan-400/30
+hover:bg-slate-700
+"
     >
       <FaGithub size={18} />
       GitHub
@@ -238,7 +309,21 @@ function Contact() {
     }
     target="_blank"
     rel="noreferrer"
-    className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 px-5 py-3 rounded-xl transition"
+    className="
+inline-flex
+items-center
+gap-2
+rounded-xl
+bg-blue-600
+px-6
+py-3
+font-semibold
+text-white
+transition-all
+duration-300
+hover:-translate-y-1
+hover:bg-blue-500
+"
   >
     <FaLinkedin size={18} />
     LinkedIn
@@ -250,7 +335,23 @@ function Contact() {
       href={contact.resume}
       target="_blank"
       rel="noreferrer"
-      className="flex items-center gap-2 px-5 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-600 transition"
+     className="
+inline-flex
+items-center
+gap-2
+rounded-xl
+bg-cyan-500
+px-6
+py-3
+font-semibold
+text-white
+shadow-lg
+shadow-cyan-500/20
+transition-all
+duration-300
+hover:-translate-y-1
+hover:bg-cyan-400
+"
     >
       <FileText size={18} />
       Download Resume

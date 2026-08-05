@@ -1,5 +1,6 @@
 import EditableText from "../../components/Editable/EditableText";
 import { usePortfolio } from "../../context/PortfolioContext";
+import { Download, Mail } from "lucide-react";
 
 function Hero() {
   const { draft, updateSection } = usePortfolio();
@@ -16,17 +17,25 @@ function Hero() {
   return (
     <section
   id="home"
-  className="min-h-screen flex items-center py-32"
+  className="relative min-h-screen flex items-center overflow-hidden py-28"
 >
+  {/* Background Glow */}
+<div className="absolute inset-0 -z-10 overflow-hidden">
+
+  <div className="absolute top-20 left-20 h-72 w-72 rounded-full bg-cyan-500/10 blur-[140px]" />
+
+  <div className="absolute bottom-20 right-20 h-96 w-96 rounded-full bg-blue-600/10 blur-[170px]" />
+
+</div>
 <div className="max-w-7xl mx-auto w-full px-6 lg:px-12">
 
-  <div className="grid lg:grid-cols-2 gap-16 items-center">
+ <div className="grid lg:grid-cols-2 gap-20 xl:gap-28 items-center">
 
     {/* LEFT */}
 
     <div>
 
-      <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-medium tracking-wide shadow-lg">
+      <span className="inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/5 px-6 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-cyan-300 backdrop-blur-md transition-all duration-300 hover:border-cyan-400/50 hover:bg-cyan-400/10 hover:shadow-lg hover:shadow-cyan-500/10">
         <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
         {home.availability}
       </span>
@@ -36,12 +45,12 @@ function Hero() {
         <EditableText
           value={home.greeting}
           onChange={(value) => updateHome("greeting", value)}
-          className="text-xl md:text-2xl text-slate-300 font-medium"
+          className="text-xl md:text-2xl text-slate-400 font-medium tracking-wide"
         />
 
       </div>
 
-      <div className="mt-4 space-y-2">
+      <div className="mt-5 space-y-4">
 
         <EditableText
           value={home.firstName}
@@ -52,7 +61,7 @@ function Hero() {
         <EditableText
           value={home.lastName}
           onChange={(value) => updateHome("lastName", value)}
-          className="block text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-none text-cyan-400"
+          className="block text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-none bg-gradient-to-r from-cyan-300 via-cyan-400 to-blue-500 bg-clip-text text-transparent"
         />
 
       </div>
@@ -68,43 +77,45 @@ function Hero() {
               home.roles[2],
             ])
           }
-          className="text-2xl md:text-3xl font-semibold text-slate-200"
+          className="text-2xl md:text-3xl font-bold text-white tracking-tight"
         />
 
       </div>
 
-      <div className="mt-8 max-w-2xl">
+      <div className="mt-8 max-w-xl">
 
         <EditableText
           multiline
           value={home.description}
           onChange={(value) => updateHome("description", value)}
-          className="text-lg text-slate-400 leading-9"
+          className="text-lg md:text-xl leading-8 text-slate-400"
         />
 
       </div>
 
-      <div className="flex flex-wrap gap-5 mt-10">
+      <div className="mt-12 flex flex-wrap items-center gap-5">
 
-        <a
-          href="/resume.pdf"
-          target="_blank"
-          rel="noreferrer"
-          className="px-8 py-4 rounded-2xl bg-cyan-500 hover:bg-cyan-600 transition-all duration-300 font-semibold shadow-lg shadow-cyan-500/30 hover:scale-105"
-        >
-          📄 Download Resume
-        </a>
+       <a
+  href="/resume.pdf"
+  target="_blank"
+  rel="noreferrer"
+  className="inline-flex items-center gap-3 rounded-xl bg-cyan-500 px-8 py-4 font-semibold text-white shadow-lg shadow-cyan-500/20 transition-all duration-300 hover:-translate-y-1 hover:bg-cyan-400 hover:shadow-cyan-500/40"
+>
+  <Download size={20} />
+  Download Resume
+</a>
 
         <button
-          onClick={() =>
-            document
-              .getElementById("contact")
-              ?.scrollIntoView({ behavior: "smooth" })
-          }
-          className="px-8 py-4 rounded-2xl border border-cyan-400 text-cyan-300 hover:bg-cyan-500 hover:text-white transition-all duration-300 hover:scale-105"
-        >
-          📩 Contact Me
-        </button>
+  onClick={() =>
+    document
+      .getElementById("contact")
+      ?.scrollIntoView({ behavior: "smooth" })
+  }
+  className="inline-flex items-center gap-3 rounded-xl border border-cyan-400/40 px-8 py-4 font-semibold text-cyan-300 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400 hover:bg-cyan-500/10"
+>
+  <Mail size={20} />
+  Contact Me
+</button>
 
       </div>
 
@@ -122,11 +133,11 @@ function Hero() {
 
     {/* Outer Glow */}
 
-    <div className="absolute -inset-8 rounded-full bg-cyan-500/20 blur-3xl group-hover:bg-cyan-400/30 transition-all duration-500"></div>
+   <div className="absolute -inset-12 rounded-full bg-cyan-400/10 blur-[150px] transition-all duration-500 group-hover:bg-cyan-400/20"></div>
 
     {/* Animated Ring */}
 
-    <div className="absolute inset-0 rounded-full border-2 border-cyan-400/40 animate-pulse"></div>
+   <div className="absolute inset-0 rounded-full border border-cyan-400/20"></div>
 
     {/* Image */}
 
@@ -134,20 +145,20 @@ function Hero() {
       src={home.profileImage}
       alt="Profile"
       className="
-        relative
-        w-80
-        h-80
-        md:w-[430px]
-        md:h-[430px]
-        object-cover
-        rounded-full
-        border-[6px]
-        border-cyan-400
-        shadow-[0_0_60px_rgba(34,211,238,0.35)]
-        transition-all
-        duration-500
-        group-hover:scale-105
-      "
+relative
+w-80
+h-80
+md:w-[410px]
+md:h-[410px]
+object-cover
+rounded-full
+border-[4px]
+border-cyan-400/70
+shadow-[0_0_80px_rgba(34,211,238,0.18)]
+transition-all
+duration-500
+group-hover:scale-[1.03]
+"
     />
 
   </div>
