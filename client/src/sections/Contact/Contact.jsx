@@ -63,7 +63,7 @@ function Contact() {
    <EditableText
   value={contact.title}
   onChange={(value) => update("title", value)}
-  className="text-5xl md:text-6xl lg:text-7xl font-black tracking-[-0.04em] text-white"
+  className="text-4xl md:text-5xl lg:text-6xl font-black tracking-[-0.04em] text-white"
 />
 
     <div className="mt-6">
@@ -71,7 +71,7 @@ function Contact() {
   multiline
   value={contact.subtitle}
   onChange={(value) => update("subtitle", value)}
-  className="mt-8 text-lg md:text-xl leading-8 tracking-[0.01em] text-slate-300"
+  className="mt-8 text-base md:text-lg leading-8 tracking-[0.01em] text-slate-300"
 />
 </div>
     {editMode && (
@@ -156,7 +156,7 @@ hover:shadow-[0_0_35px_rgba(34,211,238,0.15)]
             <EditableText
               value={contact.email}
               onChange={(value) => update("email", value)}
-              className="text-white"
+              className="text-base md:text-lg font-medium text-white"
             />
 
           </div>
@@ -217,7 +217,7 @@ hover:shadow-[0_0_35px_rgba(34,211,238,0.15)]
           <EditableText
             value={contact.phone}
             onChange={(value) => update("phone", value)}
-            className="text-white"
+            className="text-base md:text-lg font-medium text-white"
           />
 
         </div>
@@ -258,7 +258,7 @@ hover:shadow-[0_0_35px_rgba(34,211,238,0.15)]
           <EditableText
             value={contact.location}
             onChange={(value) => update("location", value)}
-            className="text-white"
+            className="text-base md:text-lg font-medium text-white"
           />
 
         </div>
@@ -269,7 +269,7 @@ hover:shadow-[0_0_35px_rgba(34,211,238,0.15)]
 
     {/* Buttons */}
 
-    <div className="flex flex-wrap gap-4 mt-8">
+   <div className="flex flex-wrap items-center gap-4 mt-8">
 
   {contact.github.trim() !== "" && (
     <a
@@ -284,8 +284,7 @@ rounded-xl
 border
 border-white/10
 bg-slate-800/80
-px-6
-py-3
+px-6 py-3 min-w-[180px] justify-center
 font-semibold
 text-white
 transition-all
@@ -315,8 +314,7 @@ items-center
 gap-2
 rounded-xl
 bg-blue-600
-px-6
-py-3
+px-6 py-3 min-w-[180px] justify-center
 font-semibold
 text-white
 transition-all
@@ -341,8 +339,7 @@ items-center
 gap-2
 rounded-xl
 bg-cyan-500
-px-6
-py-3
+px-6 py-3 min-w-[180px] justify-center
 font-semibold
 text-white
 shadow-lg

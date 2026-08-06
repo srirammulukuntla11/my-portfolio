@@ -77,7 +77,7 @@ function Certifications() {
               title: value,
             })
           }
-         className="text-5xl md:text-6xl lg:text-7xl font-black tracking-[-0.04em] text-white"
+         className="text-4xl md:text-5xl lg:text-6xl font-black tracking-[-0.04em] text-white"
         />
 
         <div className="mt-6 mb-20 h-1.5 w-32 rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 shadow-[0_0_20px_rgba(34,211,238,0.45)]"></div>
@@ -96,8 +96,8 @@ bg-gradient-to-br
 from-slate-900/80
 via-slate-900/70
 to-slate-800/70
-p-8
-md:p-10
+p-7
+md:p-8
 backdrop-blur-xl
 transition-all
 duration-500
@@ -114,7 +114,7 @@ hover:shadow-[0_0_40px_rgba(34,211,238,0.15)]
                   onChange={(value) =>
                     updateCertificate(index, "title", value)
                   }
-                 className="text-3xl font-black tracking-tight text-white"
+                 className="text-2xl md:text-3xl font-bold tracking-tight text-white"
                 />
 
                 {editMode && (
@@ -133,7 +133,7 @@ hover:shadow-[0_0_40px_rgba(34,211,238,0.15)]
                 onChange={(value) =>
                   updateCertificate(index, "organization", value)
                 }
-                className="block mt-4 text-lg font-semibold text-cyan-300"
+                className="block mt-4 text-base md:text-lg font-semibold text-cyan-300"
               />
 
                 <EditableText
@@ -150,7 +150,7 @@ hover:shadow-[0_0_40px_rgba(34,211,238,0.15)]
                   onChange={(value) =>
                     updateCertificate(index, "description", value)
                   }
-                 className="block mt-6 text-lg leading-8 tracking-[0.01em] text-slate-300"
+                className="block mt-6 text-base md:text-lg leading-8 tracking-[0.01em] text-slate-300"
                 />
 
 
@@ -219,8 +219,8 @@ rounded-xl
 border
 border-white/10
 bg-slate-800/80
-px-5
-py-3
+px-4
+py-2.5
 font-semibold
 text-white
 transition-all
@@ -245,8 +245,8 @@ items-center
 gap-2
 rounded-xl
 bg-cyan-500
-px-5
-py-3
+px-4
+py-2.5
 font-semibold
 text-white
 shadow-lg
@@ -272,8 +272,8 @@ items-center
 gap-2
 rounded-xl
 bg-emerald-600
-px-5
-py-3
+px-4
+py-2.5
 font-semibold
 text-white
 shadow-lg

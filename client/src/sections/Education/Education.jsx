@@ -73,7 +73,7 @@ function Education() {
               title: value,
             })
           }
-          className="text-5xl md:text-6xl lg:text-7xl font-black tracking-[-0.04em] text-white"
+          className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-[-0.04em] text-white"
         />
 
         <div className="mt-6 mb-20 h-1.5 w-32 rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 shadow-[0_0_20px_rgba(34,211,238,0.45)]"></div>
@@ -102,7 +102,7 @@ function Education() {
 
                 {/* Card */}
 
-                <div className="flex-1 rounded-[30px] border border-white/10 bg-gradient-to-br from-slate-900/80 via-slate-900/70 to-slate-800/70 p-8 md:p-10 backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-cyan-400/30 hover:shadow-[0_0_40px_rgba(34,211,238,0.15)]">
+                <div className="flex-1 rounded-[30px] border border-white/10 bg-gradient-to-br from-slate-900/80 via-slate-900/70 to-slate-800/70 p-7 md:p-8 backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-cyan-400/30 hover:shadow-[0_0_40px_rgba(34,211,238,0.15)]">
 
                   <div className="flex justify-between items-start gap-5">
 
@@ -113,7 +113,7 @@ function Education() {
                         onChange={(value) =>
                           updateItem(index, "degree", value)
                         }
-                        className="text-3xl md:text-[38px] font-black tracking-tight text-white"
+                       className="text-2xl md:text-3xl font-bold text-white"
                       />
 
                       <EditableText
@@ -121,7 +121,7 @@ function Education() {
                         onChange={(value) =>
                           updateItem(index, "college", value)
                         }
-                        className="block mt-4 text-xl font-semibold text-cyan-300"
+                        className="block mt-4 text-lg md:text-xl font-semibold text-cyan-400"
                       />
 
                     </div>
@@ -139,30 +139,30 @@ function Education() {
 
                   <div className="flex flex-wrap gap-5 mt-8">
 
-                    <div className="flex items-center gap-3 rounded-full border border-white/10 bg-slate-800/60 px-5 py-3 backdrop-blur-md">
+                    <div className="flex items-center gap-2 rounded-full border border-white/10 bg-slate-800/60 px-4 py-2.5 backdrop-blur-md">
 
-                      <span className="text-xl">📅</span>
+                      <span className="text-lg">📅</span>
 
                       <EditableText
                         value={item.duration}
                         onChange={(value) =>
                           updateItem(index, "duration", value)
                         }
-                        className="text-white font-medium"
+                        className="text-sm font-medium text-white"
                       />
 
                     </div>
 
-                    <div className="flex items-center gap-3 rounded-full border border-cyan-400/20 bg-cyan-500/10 px-5 py-3 backdrop-blur-md">
+                    <div className="flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-500/10 px-4 py-2.5 backdrop-blur-md">
 
-                      <span className="text-xl">⭐</span>
+                      <span className="text-lg">⭐</span>
 
                       <EditableText
                         value={item.score}
                         onChange={(value) =>
                           updateItem(index, "score", value)
                         }
-                        className="text-cyan-300 font-semibold"
+                        className="text-sm font-semibold text-cyan-300"
                       />
 
                     </div>

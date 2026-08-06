@@ -41,7 +41,7 @@ function About() {
           <EditableText
             value={about.title}
             onChange={(value) => updateAbout("title", value)}
-            className="text-5xl md:text-6xl lg:text-7xl font-black tracking-[-0.04em] leading-none text-white"
+            className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-[-0.04em] text-white"
           />
 
           <div className="mt-6 h-1.5 w-32 rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 shadow-[0_0_20px_rgba(34,211,238,0.5)]"></div>
@@ -56,7 +56,15 @@ function About() {
             multiline
             value={about.description}
             onChange={(value) => updateAbout("description", value)}
-            className="text-lg md:text-[22px] leading-[2.2] tracking-[0.01em] text-slate-300"
+ className="
+text-[17px]
+md:text-[18px]
+font-[400]
+leading-9
+tracking-[0.015em]
+text-slate-300
+max-w-3xl
+"
           />
 
         </div>

@@ -72,7 +72,7 @@ function Experience() {
               title: value,
             })
           }
-          className="text-5xl md:text-6xl lg:text-7xl font-black tracking-[-0.04em] text-white"
+          className="text-4xl md:text-5xl lg:text-6xl font-black tracking-[-0.04em] text-white"
         />
 
         <div className="mt-6 mb-20 h-1.5 w-32 rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 shadow-[0_0_20px_rgba(34,211,238,0.45)]"></div>
@@ -109,7 +109,7 @@ hover:shadow-[0_0_40px_rgba(34,211,238,0.15)]
                   onChange={(value) =>
                     updateItem(index, "role", value)
                   }
-                  className="text-3xl font-black tracking-tight text-white"
+                  className="text-2xl md:text-3xl font-bold text-white"
                 />
 
                 {editMode && (
@@ -128,7 +128,7 @@ hover:shadow-[0_0_40px_rgba(34,211,238,0.15)]
                 onChange={(value) =>
                   updateItem(index, "company", value)
                 }
-                className="block mt-4 text-lg font-semibold text-cyan-300"
+                className="block mt-4 text-base md:text-lg font-semibold text-cyan-300"
               />
 
               <div className="inline-block mt-5 rounded-full border border-white/10 bg-slate-800/60 px-5 py-3 backdrop-blur-md">

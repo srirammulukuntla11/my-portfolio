@@ -95,7 +95,7 @@ function Skills() {
               title: value,
             })
           }
-          className="text-5xl md:text-6xl lg:text-7xl font-black tracking-[-0.04em] text-white"
+          className="text-4xl md:text-5xl lg:text-6xl font-black tracking-[-0.04em] text-white"
         />
 
        <div className="mt-6 mb-20 h-1.5 w-32 rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 shadow-[0_0_20px_rgba(34,211,238,0.45)]"></div>
@@ -132,7 +132,7 @@ hover:shadow-[0_0_40px_rgba(34,211,238,0.15)]
                   onChange={(value) =>
                     updateCategoryTitle(catIndex, value)
                   }
-                  className="text-3xl font-black tracking-tight text-white"
+                  className="text-2xl md:text-3xl font-bold tracking-tight text-white"
                 />
 
                 {editMode && (
@@ -168,8 +168,8 @@ rounded-full
 border
 border-cyan-400/20
 bg-cyan-500/10
-px-5
-py-3
+px-4
+py-2.5
 backdrop-blur-md
 transition-all
 duration-300
@@ -184,7 +184,7 @@ hover:bg-cyan-500/20
                       onChange={(value) =>
                         updateSkill(catIndex, skillIndex, value)
                       }
-                      className="font-semibold tracking-wide text-slate-200"
+                      className="text-sm font-medium tracking-wide text-slate-200"
                     />
 
                     {editMode && (
@@ -193,23 +193,11 @@ hover:bg-cyan-500/20
                           deleteSkill(catIndex, skillIndex)
                         }
                        className="
-mt-8
-inline-flex
-items-center
-gap-2
-rounded-xl
-border
-border-cyan-400/20
-bg-cyan-500/10
-px-5
-py-3
-font-semibold
-text-cyan-300
+p-1
+rounded-md
+hover:bg-red-500/10
 transition-all
 duration-300
-hover:border-cyan-400
-hover:bg-cyan-500
-hover:text-white
 "
                       >
                         <Trash2 size={15} className="text-red-500 hover:text-red-400" />
