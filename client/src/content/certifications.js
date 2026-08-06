@@ -10,7 +10,7 @@ const certificationsData = {
       certificate: "",
       credential: "",
       project: "",
-    },,
+    },
 
     {
       id: 2,
@@ -20,7 +20,7 @@ const certificationsData = {
       certificate: "",
       credential: "",
       project: "",
-    },,
+    },
 
     {
       id: 3,
@@ -30,7 +30,7 @@ const certificationsData = {
       certificate: "",
       credential: "",
       project: "",
-    },,
+    },
   ],
 };
 

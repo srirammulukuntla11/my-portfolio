@@ -9,11 +9,12 @@ import certificationsData from "../content/certifications";
 import codingProfilesData from "../content/codingProfiles";
 import experienceData from "../content/experience";
 import contactData from "../content/contact";
+import api from "../api/portfolioApi";
 
 
 const PortfolioContext = createContext();
 
-const STORAGE_KEY = "portfolio-data";
+
 
 const defaultPortfolio = {
   home: homeData,
@@ -27,31 +28,52 @@ const defaultPortfolio = {
   contact: contactData,
 };
 export function PortfolioProvider({ children }) {
-  const [portfolio, setPortfolio] = useState(() => {
-    const saved = localStorage.getItem(STORAGE_KEY);
-
-    if (!saved) return defaultPortfolio;
-
-    const parsed = JSON.parse(saved);
-
-   return {
-  home: parsed.home || homeData,
-  about: parsed.about || aboutData,
-  education: parsed.education || educationData,
-  skills: parsed.skills || skillsData,
-  projects: parsed.projects || projectsData,
-  certifications: parsed.certifications || certificationsData,
-  codingProfiles: parsed.codingProfiles || codingProfilesData,
-  experience: parsed.experience || experienceData,
-  contact: parsed.contact || contactData,
-};
-  });
+  const [portfolio, setPortfolio] = useState(defaultPortfolio);
 
   const [draft, setDraft] = useState(portfolio);
 
   useEffect(() => {
     setDraft(portfolio);
   }, [portfolio]);
+  useEffect(() => {
+  const fetchPortfolio = async () => {
+    try {
+     let { data } = await api.get("/portfolio");
+
+const isEmpty =
+  !data.home ||
+  Object.keys(data.home).length === 0;
+
+if (isEmpty) {
+  await api.put("/portfolio", defaultPortfolio);
+
+  const response = await api.get("/portfolio");
+
+  data = response.data;
+}
+
+      if (data) {
+        const loadedPortfolio = {
+          home: data.home || homeData,
+          about: data.about || aboutData,
+          education: data.education || educationData,
+          skills: data.skills || skillsData,
+          projects: data.projects || projectsData,
+          certifications: data.certifications || certificationsData,
+          codingProfiles: data.codingProfiles || codingProfilesData,
+          experience: data.experience || experienceData,
+          contact: data.contact || contactData,
+        };
+
+        setPortfolio(loadedPortfolio);
+      }
+    } catch (error) {
+      console.error("Failed to fetch portfolio", error);
+    }
+  };
+
+  fetchPortfolio();
+}, []);
 
   const updateSection = (sectionName, data) => {
     setDraft((prev) => ({
@@ -60,10 +82,19 @@ export function PortfolioProvider({ children }) {
     }));
   };
 
-  const saveChanges = () => {
+  const saveChanges = async () => {
+  try {
+    await api.put("/portfolio", draft);
+
     setPortfolio(draft);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(draft));
-  };
+
+    alert("✅ Portfolio updated successfully!");
+  } catch (error) {
+    console.error(error);
+
+    alert("❌ Failed to save portfolio.");
+  }
+};
 
   const cancelChanges = () => {
     setDraft(portfolio);
