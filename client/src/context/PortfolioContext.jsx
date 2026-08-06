@@ -1,58 +1,37 @@
 import { createContext, useContext, useEffect, useState } from "react";
-
-import homeData from "../content/home";
-import aboutData from "../content/about";
-import educationData from "../content/education";
-import skillsData from "../content/skills";
-import projectsData from "../content/projects";
-import certificationsData from "../content/certifications";
-import codingProfilesData from "../content/codingProfiles";
-import experienceData from "../content/experience";
-import contactData from "../content/contact";
-
+import {
+  getPortfolio,
+  updatePortfolio,
+} from "../api/portfolioApi";
 
 const PortfolioContext = createContext();
 
-const STORAGE_KEY = "portfolio-data";
-
-const defaultPortfolio = {
-  home: homeData,
-  about: aboutData,
-  education: educationData,
-  skills: skillsData,
-  projects: projectsData,
-  certifications: certificationsData,
-  codingProfiles: codingProfilesData,
-  experience: experienceData,
-  contact: contactData,
-};
 export function PortfolioProvider({ children }) {
-  const [portfolio, setPortfolio] = useState(() => {
-    const saved = localStorage.getItem(STORAGE_KEY);
+  const [portfolio, setPortfolio] = useState(null);
+  const [draft, setDraft] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-    if (!saved) return defaultPortfolio;
-
-    const parsed = JSON.parse(saved);
-
-   return {
-  home: parsed.home || homeData,
-  about: parsed.about || aboutData,
-  education: parsed.education || educationData,
-  skills: parsed.skills || skillsData,
-  projects: parsed.projects || projectsData,
-  certifications: parsed.certifications || certificationsData,
-  codingProfiles: parsed.codingProfiles || codingProfilesData,
-  experience: parsed.experience || experienceData,
-  contact: parsed.contact || contactData,
-};
-  });
-
-  const [draft, setDraft] = useState(portfolio);
-
+  // Load portfolio from backend
   useEffect(() => {
-    setDraft(portfolio);
-  }, [portfolio]);
+    fetchPortfolio();
+  }, []);
 
+  const fetchPortfolio = async () => {
+    try {
+      setLoading(true);
+
+      const data = await getPortfolio();
+
+      setPortfolio(data);
+      setDraft(data);
+    } catch (error) {
+      console.error("Failed to load portfolio:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Update section locally
   const updateSection = (sectionName, data) => {
     setDraft((prev) => ({
       ...prev,
@@ -60,14 +39,42 @@ export function PortfolioProvider({ children }) {
     }));
   };
 
-  const saveChanges = () => {
-    setPortfolio(draft);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(draft));
+  // Save to MongoDB
+  const saveChanges = async () => {
+    try {
+      const updated = await updatePortfolio(draft);
+
+      setPortfolio(updated);
+      setDraft(updated);
+
+      alert("Portfolio Updated Successfully ✅");
+    } catch (error) {
+      console.error(error);
+      alert("Failed to save changes ❌");
+    }
   };
 
+  // Cancel Changes
   const cancelChanges = () => {
     setDraft(portfolio);
   };
+
+  if (loading) {
+    return (
+      <div
+        style={{
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          fontSize: "24px",
+          fontWeight: "bold",
+        }}
+      >
+        Loading Portfolio...
+      </div>
+    );
+  }
 
   return (
     <PortfolioContext.Provider
