@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
 import { useAdmin } from "../../context/AdminContext";
 import { usePortfolio } from "../../context/PortfolioContext";
 
@@ -8,6 +9,7 @@ function Navbar() {
 
   const [showLogin, setShowLogin] = useState(false);
   const [password, setPassword] = useState("");
+  const [mobileMenu, setMobileMenu] = useState(false);
 
   const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
@@ -73,13 +75,13 @@ function Navbar() {
             : "bg-slate-950/90 border-slate-800"
         }`}
       >
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+       <div className="max-w-7xl mx-auto flex items-center justify-between gap-6 px-6 py-4">
 
-          <h1 className="text-2xl font-bold text-cyan-400 whitespace-nowrap">
+          <h1 className="text-xl md:text-2xl font-bold text-cyan-400 whitespace-nowrap">
             Sriram Mulukuntla
           </h1>
 
-          <div className="hidden lg:flex items-center gap-7">
+          <div className="hidden xl:flex flex-1 justify-center items-center gap-5 text-[15px]">
                         <a
               href="#home"
               className={navLinkClass("home")}
@@ -146,48 +148,160 @@ function Navbar() {
           </div>
 
           <div className="flex items-center gap-4">
+            {/* Mobile Menu Button */}
 
-            {!isAdmin ? (
+<button
+  onClick={() => setMobileMenu(!mobileMenu)}
+ className="lg:hidden p-2 text-cyan-400"
+>
+  {mobileMenu ? <X size={28} /> : <Menu size={28} />}
+</button>
 
-              <button
-                onClick={() => setShowLogin(true)}
-                className="px-4 py-2 border border-cyan-400 rounded-lg text-cyan-400 hover:bg-cyan-400 hover:text-black transition"
-              >
-                Admin Login
-              </button>
+          {!isAdmin ? (
+  <button
+    onClick={() => setShowLogin(true)}
+    className="hidden lg:block px-4 py-2 border border-cyan-400 rounded-lg text-cyan-400 hover:bg-cyan-400 hover:text-black transition"
+  >
+    Admin Login
+  </button>
+) : (
+  <div className="hidden lg:flex items-center gap-2 flex-shrink-0">
 
-            ) : (
+    <button
+      onClick={saveChanges}
+      className="px-3 py-2 text-sm bg-green-500 rounded-lg hover:bg-green-600 transition whitespace-nowrap"
+    >
+      💾 Save
+    </button>
 
-              <>
-                <button
-                  onClick={saveChanges}
-                  className="px-4 py-2 bg-green-500 rounded-lg hover:bg-green-600 transition"
-                >
-                  💾 Save
-                </button>
+    <button
+      onClick={cancelChanges}
+      className="px-3 py-2 text-sm bg-yellow-500 rounded-lg hover:bg-yellow-600 transition whitespace-nowrap"
+    >
+      Cancel
+    </button>
 
-                <button
-                  onClick={cancelChanges}
-                  className="px-4 py-2 bg-yellow-500 rounded-lg hover:bg-yellow-600 transition"
-                >
-                  Cancel
-                </button>
+    <button
+      onClick={logout}
+      className="px-3 py-2 text-sm bg-red-500 rounded-lg hover:bg-red-600 transition whitespace-nowrap"
+    >
+      Logout
+    </button>
 
-                <button
-                  onClick={logout}
-                  className="px-4 py-2 bg-red-500 rounded-lg hover:bg-red-600 transition"
-                >
-                  Logout
-                </button>
-
-              </>
-
-            )}
+  </div>
+)}
 
           </div>
 
         </div>
+{/* Mobile Menu */}
 
+{mobileMenu && (
+  <div
+  className={`
+lg:hidden
+absolute
+top-full
+left-0
+w-full
+overflow-hidden
+bg-slate-950
+border-t
+border-slate-800
+shadow-xl
+transition-all
+duration-300
+${
+  mobileMenu
+    ? "max-h-[700px] opacity-100"
+    : "max-h-0 opacity-0"
+}
+`}
+>
+
+    <div className="flex flex-col px-6 py-6 space-y-5">
+
+      <a href="#home" onClick={() => setMobileMenu(false)} className={navLinkClass("home")}>Home</a>
+
+      <a href="#about" onClick={() => setMobileMenu(false)} className={navLinkClass("about")}>About</a>
+
+      <a href="#education" onClick={() => setMobileMenu(false)} className={navLinkClass("education")}>Education</a>
+
+      <a href="#skills" onClick={() => setMobileMenu(false)} className={navLinkClass("skills")}>Skills</a>
+
+      <a href="#projects" onClick={() => setMobileMenu(false)} className={navLinkClass("projects")}>Projects</a>
+
+      <a href="#certifications" onClick={() => setMobileMenu(false)} className={navLinkClass("certifications")}>Certificates</a>
+
+      <a href="#coding-profiles" onClick={() => setMobileMenu(false)} className={navLinkClass("coding-profiles")}>Coding</a>
+
+      <a href="#experience" onClick={() => setMobileMenu(false)} className={navLinkClass("experience")}>Experience</a>
+
+      <a href="#contact" onClick={() => setMobileMenu(false)} className={navLinkClass("contact")}>Contact</a>
+     <hr className="border-slate-800 my-2" />
+
+{!isAdmin ? (
+  <button
+    onClick={() => {
+      setMobileMenu(false);
+      setShowLogin(true);
+    }}
+    className="
+w-full
+rounded-xl
+border
+border-cyan-400
+px-4
+py-3
+font-semibold
+text-cyan-400
+transition-all
+duration-300
+hover:bg-cyan-400
+hover:text-slate-950
+"
+  >
+    Admin Login
+  </button>
+) : (
+  <div className="flex flex-col gap-3">
+
+    <button
+      onClick={() => {
+        saveChanges();
+        setMobileMenu(false);
+      }}
+      className="w-full py-3 rounded-xl bg-green-500 hover:bg-green-600 transition font-semibold"
+    >
+      💾 Save Changes
+    </button>
+
+    <button
+      onClick={() => {
+        cancelChanges();
+        setMobileMenu(false);
+      }}
+      className="w-full py-3 rounded-xl bg-yellow-500 hover:bg-yellow-600 transition font-semibold"
+    >
+      Cancel Changes
+    </button>
+
+    <button
+      onClick={() => {
+        logout();
+        setMobileMenu(false);
+      }}
+      className="w-full py-3 rounded-xl bg-red-500 hover:bg-red-600 transition font-semibold"
+    >
+      Logout
+    </button>
+
+  </div>
+)}
+    </div>
+
+  </div>
+)}
       </nav>
             {showLogin && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">

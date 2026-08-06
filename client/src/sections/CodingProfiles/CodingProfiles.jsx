@@ -2,6 +2,12 @@ import EditableText from "../../components/Editable/EditableText";
 import { usePortfolio } from "../../context/PortfolioContext";
 import { useAdmin } from "../../context/AdminContext";
 import { Plus, Trash2, ExternalLink } from "lucide-react";
+import {
+  SiLeetcode,
+  SiGeeksforgeeks,
+  SiCodechef,
+  SiGithub,
+} from "react-icons/si";
 
 function CodingProfiles() {
   const { draft, updateSection } = usePortfolio();
@@ -51,6 +57,27 @@ Strong in Java & DSA`,
     updated.splice(index, 1);
     saveProfiles(updated);
   };
+  const getPlatformIcon = (platform) => {
+  const name = platform.toLowerCase();
+
+  if (name.includes("leetcode")) {
+    return <SiLeetcode className="text-4xl text-yellow-400 flex-shrink-0" />;
+  }
+
+  if (name.includes("geeks")) {
+    return <SiGeeksforgeeks className="text-4xl text-green-500 flex-shrink-0" />;
+  }
+
+  if (name.includes("codechef")) {
+    return <SiCodechef className="text-4xl text-amber-700 flex-shrink-0" />;
+  }
+
+  if (name.includes("github")) {
+    return <SiGithub className="text-4xl text-white flex-shrink-0" />;
+  }
+
+  return null;
+};
 
   return (
   <section
@@ -108,13 +135,33 @@ hover:shadow-[0_0_40px_rgba(34,211,238,0.15)]
 
             <div className="flex justify-between items-start">
 
-              <EditableText
-                value={item.platform}
-                onChange={(value) =>
-                  updateProfile(index, "platform", value)
-                }
-                className="text-2xl md:text-3xl font-bold tracking-tight text-white"
-              />
+              <div className="flex items-center gap-3">
+
+  {item.platform === "LeetCode" && (
+    <SiLeetcode className="text-4xl text-yellow-400" />
+  )}
+
+  {item.platform === "GeeksforGeeks" && (
+    <SiGeeksforgeeks className="text-4xl text-green-500" />
+  )}
+
+  {item.platform === "CodeChef" && (
+    <SiCodechef className="text-4xl text-amber-700" />
+  )}
+
+  {item.platform === "GitHub" && (
+    <SiGithub className="text-4xl text-white" />
+  )}
+
+  <EditableText
+    value={item.platform}
+    onChange={(value) =>
+      updateProfile(index, "platform", value)
+    }
+    className="text-3xl font-black tracking-tight text-white"
+  />
+
+</div>
 
               {editMode && (
                 <button
