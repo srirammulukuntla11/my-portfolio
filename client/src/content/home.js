@@ -1,5 +1,5 @@
 const homeData = {
-  availability: "Available for Internships",
+  availability: "OPEN TO SOFTWARE ENGINEERING & AI/ML OPPORTUNITIES",
 
   greeting: "Hi, I'm",
 
