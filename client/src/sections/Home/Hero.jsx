@@ -1,9 +1,10 @@
 import EditableText from "../../components/Editable/EditableText";
 import { usePortfolio } from "../../context/PortfolioContext";
-import { Download, Mail } from "lucide-react";
-
+import { Download, Mail, Link } from "lucide-react";
+import { useAdmin } from "../../context/AdminContext";
 function Hero() {
   const { draft, updateSection } = usePortfolio();
+const { isAdmin } = useAdmin();
 
   const home = draft.home;
 
@@ -13,6 +14,15 @@ function Hero() {
       [field]: value,
     });
   };
+  const updateButton = (field, value) => {
+  updateSection("home", {
+    ...home,
+    buttons: {
+      ...home.buttons,
+      [field]: value,
+    },
+  });
+};
 
   return (
     <section
@@ -92,17 +102,31 @@ function Hero() {
         />
 
       </div>
+         {isAdmin && (
+  <div className="mt-8 max-w-xl">
+    <label className="block mb-2 text-cyan-400 font-semibold">
+      Resume Drive Link
+    </label>
 
-      <div className="mt-12 flex flex-wrap items-center gap-5">
+    <input
+      type="text"
+      value={home.buttons.resumeLink}
+      onChange={(e) => updateButton("resumeLink", e.target.value)}
+      placeholder="Paste Google Drive Resume Link"
+      className="w-full rounded-xl border border-cyan-400/30 bg-slate-900 px-4 py-3 text-white outline-none focus:border-cyan-400"
+    />
+  </div>
+)}
+<div className="mt-12 flex flex-wrap items-center gap-5">
 
        <a
-  href="/resume.pdf"
+  href={home.buttons.resumeLink}
   target="_blank"
   rel="noreferrer"
   className="inline-flex items-center gap-3 rounded-xl bg-cyan-500 px-8 py-4 font-semibold text-white shadow-lg shadow-cyan-500/20 transition-all duration-300 hover:-translate-y-1 hover:bg-cyan-400 hover:shadow-cyan-500/40"
 >
   <Download size={20} />
-  Download Resume
+  {home.buttons.resumeText}
 </a>
 
         <button
